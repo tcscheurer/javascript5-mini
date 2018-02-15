@@ -12,8 +12,8 @@ class App extends Component {
   }
   render() {
 
-    const favFoods = this.state.favoriteFoods.map( item, i => {
-        return <FoodItem foodItem={item}/>
+    const favFoods = this.state.favoriteFoods.map( (item, i) => {
+        return <FoodItem key={i} foodItem={item}/>
     })
 
     return (
@@ -26,3 +26,5 @@ class App extends Component {
 }
 
 export default App;
+
+// should provide key when mapping

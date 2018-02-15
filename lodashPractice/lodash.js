@@ -76,6 +76,8 @@ var customers = [
 
 //CODE HERE
 
+const emails = customers.map(curr=> curr.email);
+const emails2 = _.map(n=>n.email);
 
 
 var inviteList1 = ["Ed", "Fanny", "Mildred", "Alice", "James"];
@@ -84,6 +86,8 @@ var inviteList2 = ["Jake", "Mildred", "Jimmy", "Ed", "Franklin"];
 // Uh oh! We are having a party and two invite lists were created.
 // Create a duplicate-free list of the people we want at the party without lodash's _.union().
 // Then create another list that removes all duplicates using _.union().
+
+const inviteList3 = _.union(inviteList1,inviteList2);
 
 var friendsOfJim = [
   "Tom",
@@ -110,6 +114,19 @@ var friendsOfBetty = [
 // Jim and Betty are having a party, but they only want to invite mutual friends.
 // Create an array of mutual friends. First without using lodash.
 // Then using lodash's _.intersection().
+
+let mutualFriends = [];
+
+for(let i=0;i<friendsOfBetty.length;i++){
+  if(friendsOfJim.includes(friendsOfBetty[i])){
+    mutualFriends.push(friendsOfBetty[i])
+  }
+}
+
+
+let mutualFriends2 = _.intersecion(friendsOfJim,friendsOfBetty);
+
+
 
 var purchases = [
   {
@@ -148,3 +165,18 @@ var purchases = [
 
 // First, group the purchases by company without lodash
 // then do it again using _.groupBy()
+
+const dicovered = ["slkdf"];
+let groupedPurchases = {};
+for(let i=0;i<purchases.length;i++){
+  if(discovered.includes(purchases[i].company)){
+    groupedPurchases[purchases[i].company].push(purchases[i].order)
+  } else{
+    discovered.push(purchases[i].company)
+    groupedPurchases[purchases[i].company] = purchases[i].order
+  }
+}
+
+let groupedPurchases2 = _(purchases).groupBy(purchase=> purchase.company);
+
+console.log("reached bottom")
